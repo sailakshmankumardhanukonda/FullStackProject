@@ -1,6 +1,7 @@
 package com.infy.employeemanagementapplication.service;
 
-import java.util.List;
+
+import java.util.Map;
 
 import com.infy.employeemanagementapplication.model.Employee;
 
@@ -8,9 +9,9 @@ public interface EmployeeService {
 
 	public String createEmployee(Employee employee);
 	
-	public Employee getEmployee(int empId);
+	public Map<Integer, Employee> getEmployee(int empId);
 	
-	public List<Employee> getAll();
+	public Map<Integer, Employee> getAll();
 	
 	public String updateEmployeeCity(int empId,String city);
 	

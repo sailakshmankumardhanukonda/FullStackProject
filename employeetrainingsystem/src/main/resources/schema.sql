@@ -5,7 +5,7 @@ CREATE TABLE EMPLOYEETRAINING (
   courseid INT NOT NULL,
   score FLOAT NOT NULL,
   hoursspent INT NOT NULL,
-  dateofcompletion DATE NOT NULL,
+  dateofcompletion DATE NOT NULL ,
   status VARCHAR(50) NOT NULL, 
   PRIMARY KEY(empid,courseid)
 );

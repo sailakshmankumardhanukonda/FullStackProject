@@ -5,19 +5,24 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.infy.employeemanagementapplication.model.Employee;
 
 @Entity
 @Table(name="employee")
+@GenericGenerator(name="cusIdGen",strategy = "increment")
 public class EmployeeEntity {
 	
 	@Id
 	@Column(name="empid")
+	@GeneratedValue(generator = "cusIdGen")
 	private int empId;
 	
 	@Column(name="firstname")
@@ -77,7 +82,6 @@ public class EmployeeEntity {
 	public static Employee getModel(EmployeeEntity employee) {
 		
 		Employee emp=new Employee();
-		emp.setEmpId(employee.getEmpId());
 		emp.setFirstName(employee.getFirstName());
 		emp.setMiddleName(employee.getMiddleName());
 		emp.setLastName(employee.getLastName());

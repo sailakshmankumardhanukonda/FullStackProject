@@ -1,9 +1,9 @@
 package com.infy.employeemanagementapplication.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.infy.employeemanagementapplication.model.Employee;
 import com.infy.employeemanagementapplication.service.EmployeeServiceImpl;
 
+@CrossOrigin
 @RestController
 public class EmployeeAPI {
 
@@ -26,10 +27,7 @@ public class EmployeeAPI {
 	@PostMapping(value="/create")
 	public String createEmployee(@RequestBody Employee employee){
 		
-		String message=employeeServiceImpl.createEmployee(employee);
-		
-		
-		return message;
+		return employeeServiceImpl.createEmployee(employee);
 	}
 	
 	
@@ -37,46 +35,32 @@ public class EmployeeAPI {
 	
 	
 	@GetMapping(value="/get/{empId}")
-	public Employee getEmployee(@PathVariable int empId){
+	public Map<Integer, Employee> getEmployee(@PathVariable int empId){
 		
-		Employee emp=new Employee();
-		
-		emp=employeeServiceImpl.getEmployee(empId);
-		
-		
-		
-		return emp;
+		return employeeServiceImpl.getEmployee(empId);
 	}
 	
 	
 	@GetMapping(value="/getall")
-	public List<Employee> getAll(){
-		List<Employee> emplist=new ArrayList<>();
-		emplist.addAll(employeeServiceImpl.getAll());
+	public Map<Integer, Employee> getAll(){
 		
-		return emplist;
+		return employeeServiceImpl.getAll();
 	}
 	
 	
     @PutMapping(value= "/update/{empId}/{city}")
 	public String updateEmployee(@PathVariable int empId,@PathVariable String city){
 	
-	
-	String message=employeeServiceImpl.updateEmployeeCity(empId,city);
+     return	employeeServiceImpl.updateEmployeeCity(empId,city);
 
-	return message;
-}
+   }
     
     
     
     
     @DeleteMapping(value= "/delete/{empId}")
     public String deleteEmployee(@PathVariable int empId){
-    	
-    	String message=employeeServiceImpl.deleteEmployee(empId);
     
-    	
-    	
-    	return message;
+    	return employeeServiceImpl.deleteEmployee(empId);
     }
 }

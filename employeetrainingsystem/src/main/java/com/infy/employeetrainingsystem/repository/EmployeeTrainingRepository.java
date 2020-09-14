@@ -12,7 +12,7 @@ import com.infy.employeetrainingsystem.model.TrainingId;
 @Repository
 public interface EmployeeTrainingRepository extends JpaRepository<EmployeeTrainingEntity, TrainingId>{
 
-	@Query("select trainings from EmployeeTrainingEntity trainings where trainings.empId=?1 and status='completed'")
+	@Query("select trainings from EmployeeTrainingEntity trainings where trainings.empId=?1")
 	public List<EmployeeTrainingEntity> getEmployeeTrainingDetails(int empId);
 	
 }

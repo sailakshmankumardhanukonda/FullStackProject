@@ -46,8 +46,7 @@ public class EmployeeCourseServiceImpl {
 		else {
 			
 			EmployeeCourseEntity emp=employeeCourseRepository.findById(courseId).get();
-			emp1.setCourseId(emp.getCourseId());
-			emp1.setCourseName(emp.getCourseName());
+			emp1=EmployeeCourseEntity.getModel(emp);
 		}
 		
 		

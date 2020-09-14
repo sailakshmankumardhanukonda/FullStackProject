@@ -1,8 +1,8 @@
 package com.infy.employeemanagementapplication.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,47 +23,37 @@ public class EmployeeServiceImpl {
 	
 	
 	public String createEmployee(Employee employee){
-		String message;
-		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
-		if(isPresent)
-			message="EmployeeService.EMPLOYEE_ALREADY_PRESENT";
-		else {
-		
-		message="EmployeeRepository.EMPLOYEE_CREATED";
+
 		employeeRepository.save(Employee.getEntity(employee));
-		}
-		return message;
+		
+		return "EmployeeRepository.EMPLOYEE_CREATED";
 		
 	}
 	
 	
-	public Employee getEmployee(int empId) {
+	public Map<Integer, Employee> getEmployee(int empId) {
 		
 	String message;
 	boolean isPresent=employeeRepository.existsById(empId);
-	Employee emp=new Employee();
+	Map<Integer, Employee> emp=new TreeMap<>();
 	
 	if(!isPresent) {
 		message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
 	}
 	else {
 	EmployeeEntity employeeEntity=employeeRepository.findById(empId).get();
-	emp=EmployeeEntity.getModel(employeeEntity);
+	emp.put(employeeEntity.getEmpId(),EmployeeEntity.getModel(employeeEntity));
 	
 	}
 	return emp;
 
 }
 	
-	public List<Employee> getAll(){
-		List<Employee> emplist2=new ArrayList<>();
-		List<EmployeeEntity> emplist=new ArrayList<>();
+	public Map<Integer, Employee> getAll(){
+		 Map<Integer, Employee> map1=new TreeMap<>();
 		 Iterable<EmployeeEntity> emplist1= employeeRepository.findAll();
-		emplist1.forEach(emplist::add);
-		for(EmployeeEntity ele:emplist) {
-			emplist2.add(EmployeeEntity.getModel(ele));
-		}
-		return emplist2;
+		 emplist1.forEach(emp -> map1.put(emp.getEmpId(), EmployeeEntity.getModel(emp)));
+		return map1;
 		
 	}
 	
