@@ -1,6 +1,7 @@
 package com.infy.employeetrainingsystem.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public class EmployeeTraining {
 	
@@ -13,7 +14,7 @@ public class EmployeeTraining {
 	
 	private int hoursSpent;
 	
-	private Date dateOfCompletion;
+	private LocalDate dateOfCompletion;
 	
 	private String status;
 
@@ -49,11 +50,11 @@ public class EmployeeTraining {
 		this.hoursSpent = hoursSpent;
 	}
 
-	public Date getDateOfCompletion() {
+	public LocalDate getDateOfCompletion() {
 		return dateOfCompletion;
 	}
 
-	public void setDateOfCompletion(Date dateOfCompletion) {
+	public void setDateOfCompletion(LocalDate dateOfCompletion) {
 		this.dateOfCompletion = dateOfCompletion;
 	}
 
@@ -65,7 +66,6 @@ public class EmployeeTraining {
 		this.status = status;
 	}
 
-	
 	
 	
 	

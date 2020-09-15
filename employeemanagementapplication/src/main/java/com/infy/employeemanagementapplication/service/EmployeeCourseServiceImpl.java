@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.employeemanagementapplication.entity.EmployeeCourseEntity;
 import com.infy.employeemanagementapplication.model.EmployeeCourse;
@@ -13,6 +14,7 @@ import com.infy.employeemanagementapplication.repository.EmployeeCourseRepositor
 
 
 @Service
+@Transactional
 public class EmployeeCourseServiceImpl {
 	
 	

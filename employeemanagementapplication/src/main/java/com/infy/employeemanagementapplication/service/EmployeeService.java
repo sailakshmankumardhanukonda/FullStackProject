@@ -13,7 +13,7 @@ public interface EmployeeService {
 	
 	public Map<Integer, Employee> getAll();
 	
-	public String updateEmployeeCity(int empId,String city);
+	public String updateEmployeeCity(Employee employee);
 	
 	public String deleteEmployee(int empId);
 	

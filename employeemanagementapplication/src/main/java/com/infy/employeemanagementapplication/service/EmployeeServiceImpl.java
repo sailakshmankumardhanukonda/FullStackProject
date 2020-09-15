@@ -4,8 +4,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.employeemanagementapplication.entity.EmployeeEntity;
 import com.infy.employeemanagementapplication.model.Employee;
@@ -14,6 +17,7 @@ import com.infy.employeemanagementapplication.repository.EmployeeRepository;
 
 
 @Service
+@Transactional
 public class EmployeeServiceImpl {
 	
 	@Autowired
@@ -21,12 +25,18 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	
 	public String createEmployee(Employee employee){
 
-		employeeRepository.save(Employee.getEntity(employee));
+		String message;
+		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
+		if(isPresent)
+			message="EmployeeService.EMPLOYEE_ALREADY_PRESENT";
+		else {
 		
-		return "EmployeeRepository.EMPLOYEE_CREATED";
+		message="EmployeeRepository.EMPLOYEE_CREATED";
+		employeeRepository.save(Employee.getEntity(employee));
+		}
+		return message;
 		
 	}
 	
@@ -61,18 +71,20 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	public String updateEmployeeCity(int empId,String city){
+	public String updateEmployeeCity(Employee employee){
 		
 		String message;
-		boolean isPresent=employeeRepository.existsById(empId);
+		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
 		
 		if(!isPresent)
 			message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
 		
 		else {
-		EmployeeEntity emp=employeeRepository.findById(empId).get();
-		message="EmployeeRepository.EMPLOYEE_UNIT_UPDATED";
-		emp.setCity(city);
+		EmployeeEntity emp=employeeRepository.findById(employee.getEmpId()).get();
+		message="EmployeeRepository.EMPLOYEE_UPDATED";
+		emp.setMiddleName(employee.getMiddleName());
+		emp.setLastName(employee.getLastName());
+		emp.setCity(employee.getCity());
 		employeeRepository.save(emp);
 		}
 		

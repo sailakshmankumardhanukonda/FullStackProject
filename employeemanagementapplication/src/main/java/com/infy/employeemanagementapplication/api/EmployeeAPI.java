@@ -48,10 +48,10 @@ public class EmployeeAPI {
 	}
 	
 	
-    @PutMapping(value= "/update/{empId}/{city}")
-	public String updateEmployee(@PathVariable int empId,@PathVariable String city){
+    @PutMapping(value= "/update")
+	public String updateEmployee(@RequestBody Employee employee){
 	
-     return	employeeServiceImpl.updateEmployeeCity(empId,city);
+     return	employeeServiceImpl.updateEmployeeCity(employee);
 
    }
     

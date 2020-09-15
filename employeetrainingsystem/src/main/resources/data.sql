@@ -6,5 +6,13 @@ VALUES
 (1060798,1001,88.56,6,'2020-01-23','completed'),
 (1060797,1001,94.56,8,'2020-02-04','completed');
 
+
+
+INSERT INTO EMPLOYEETRAINING(empid,courseid,hoursspent,status) 
+VALUES
+(1060798,1005,2,'started'),
+(1060797,1006,1,'started'),
+(1060796,1007,1,'started');
+
    
 
