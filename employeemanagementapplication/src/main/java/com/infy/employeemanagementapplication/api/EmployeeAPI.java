@@ -52,7 +52,7 @@ public class EmployeeAPI {
     @PutMapping(value= "/update")
 	public String updateEmployee(@RequestBody Employee employee){
 	
-     return	employeeServiceImpl.updateEmployeeCity(employee);
+     return	employeeServiceImpl.updateEmployee(employee);
 
    }
     

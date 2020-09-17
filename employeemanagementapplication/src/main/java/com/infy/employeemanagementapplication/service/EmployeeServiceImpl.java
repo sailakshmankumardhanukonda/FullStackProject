@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -74,7 +73,7 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	public String updateEmployeeCity(Employee employee){
+	public String updateEmployee(Employee employee){
 		
 		String message;
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
