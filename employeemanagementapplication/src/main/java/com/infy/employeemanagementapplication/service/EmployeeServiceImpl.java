@@ -124,6 +124,7 @@ public class EmployeeServiceImpl {
 		
 		emp.forEach(emp1 -> emplist.add(EmployeeEntity.getModel(emp1)));
 		
+		
 		Stream<Employee> empstream=emplist.stream();
 		
 		return empstream.filter(emp2 -> emp2.getFirstName().equals(name)).collect(Collectors.toList());
