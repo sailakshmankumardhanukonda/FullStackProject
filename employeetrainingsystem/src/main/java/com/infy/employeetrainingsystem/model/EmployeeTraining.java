@@ -10,7 +10,7 @@ public class EmployeeTraining {
 	
 	private int courseId;
 	
-	private float score;
+	private Float score;
 	
 	private int hoursSpent;
 	
@@ -34,11 +34,13 @@ public class EmployeeTraining {
 		this.courseId = courseId;
 	}
 
-	public float getScore() {
+	
+
+	public Float getScore() {
 		return score;
 	}
 
-	public void setScore(float score) {
+	public void setScore(Float score) {
 		this.score = score;
 	}
 

@@ -1,10 +1,13 @@
 package com.infy.employeemanagementapplication.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
-
-
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -109,6 +112,21 @@ public class EmployeeServiceImpl {
 		}
 		return message;
 		
+		
+	}
+	
+	
+	public List<Employee> getByEmployeeFirstName(String name){
+		
+		List<Employee> emplist=new ArrayList<>();
+		
+		Iterable<EmployeeEntity> emp=employeeRepository.findAll();
+		
+		emp.forEach(emp1 -> emplist.add(EmployeeEntity.getModel(emp1)));
+		
+		Stream<Employee> empstream=emplist.stream();
+		
+		return empstream.filter(emp2 -> emp2.getFirstName().equals(name)).collect(Collectors.toList());
 		
 	}
 }

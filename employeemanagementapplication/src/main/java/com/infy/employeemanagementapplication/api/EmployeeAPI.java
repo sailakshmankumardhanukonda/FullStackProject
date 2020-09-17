@@ -1,5 +1,6 @@
 package com.infy.employeemanagementapplication.api;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,9 +59,21 @@ public class EmployeeAPI {
     
     
     
+    
     @DeleteMapping(value= "/delete/{empId}")
     public String deleteEmployee(@PathVariable int empId){
     
     	return employeeServiceImpl.deleteEmployee(empId);
     }
+    
+    
+    @GetMapping(value="/getbyfirstname/{firstname}")
+    public List<Employee> getByEmployeeFirstName(@PathVariable String firstname){
+    	
+    	return employeeServiceImpl.getByEmployeeFirstName(firstname);
+    	
+    	
+    }
+    
+    
 }
