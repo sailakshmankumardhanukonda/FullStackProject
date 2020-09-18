@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.infy.employeemanagementapplication.entity.EmployeeEntity;
+import com.infy.employeemanagementapplication.exception.EmployeeAlreadyPresentException;
+import com.infy.employeemanagementapplication.exception.EmployeeDoesNotExistsException;
 import com.infy.employeemanagementapplication.model.Employee;
 import com.infy.employeemanagementapplication.repository.EmployeeRepository;
 
@@ -27,12 +29,14 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	public String createEmployee(Employee employee){
+	public String createEmployee(Employee employee) throws EmployeeAlreadyPresentException {
 
 		String message;
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
-		if(isPresent)
+		if(isPresent) {
 			message="EmployeeService.EMPLOYEE_ALREADY_PRESENT";
+			throw new EmployeeAlreadyPresentException(message);
+		}
 		else {
 		
 		message="EmployeeRepository.EMPLOYEE_CREATED";
@@ -51,6 +55,7 @@ public class EmployeeServiceImpl {
 	
 	if(!isPresent) {
 		message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
+	
 	}
 	else {
 	EmployeeEntity employeeEntity=employeeRepository.findById(empId).get();
@@ -73,15 +78,15 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	public String updateEmployee(Employee employee)
-	{
+	public String updateEmployee(Employee employee) throws EmployeeDoesNotExistsException{
 		
 		String message;
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
 		
-		if(!isPresent)
+		if(!isPresent) {
 			message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
-		
+		  throw new EmployeeDoesNotExistsException(message);
+		}
 		else {
 		EmployeeEntity emp=employeeRepository.findById(employee.getEmpId()).get();
 		message="EmployeeRepository.EMPLOYEE_UPDATED";
@@ -99,16 +104,17 @@ public class EmployeeServiceImpl {
 	
 	
 	
-	public String deleteEmployee(int empId){
+	public String deleteEmployee(int empId) throws EmployeeDoesNotExistsException{
 		
 		
 		String message;
 		Optional<EmployeeEntity> emp=employeeRepository.findById(empId);
 		boolean isPresent=emp.isPresent();
 		
-		if(!isPresent)
+		if(!isPresent) {
 			message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
-		else {
+	         throw new EmployeeDoesNotExistsException(message);	
+		}else {
 		message="EmployeeRepository.EMPLOYEE_DELETED";
 		employeeRepository.deleteById(empId);
 		}
