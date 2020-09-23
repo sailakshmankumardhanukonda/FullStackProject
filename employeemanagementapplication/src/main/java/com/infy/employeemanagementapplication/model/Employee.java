@@ -13,17 +13,56 @@ public class Employee {
 	private String lastName;
 	private LocalDate dob;
 	private String city;
+	private long phoneNumber;
 
-
+    
 
       
+	
+
+	
+
+
+
+
+
+
+
+
 	public int getEmpId() {
 		return empId;
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	public String getFirstName() {
@@ -31,9 +70,33 @@ public class Employee {
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -45,9 +108,31 @@ public class Employee {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,9 +144,31 @@ public class Employee {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,9 +180,31 @@ public class Employee {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -87,9 +216,73 @@ public class Employee {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -103,6 +296,8 @@ public class Employee {
 		emp.setLastName(employee.getLastName());
 		emp.setDob(employee.getDob());
 		emp.setCity(employee.getCity());
+		emp.setPhoneNumber(employee.getPhoneNumber());
+		
 		
 		return emp;
 		

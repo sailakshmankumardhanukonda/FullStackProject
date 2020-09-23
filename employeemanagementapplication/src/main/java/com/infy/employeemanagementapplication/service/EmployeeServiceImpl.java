@@ -32,7 +32,9 @@ public class EmployeeServiceImpl {
 	public String createEmployee(Employee employee) throws EmployeeAlreadyPresentException {
 
 		String message;
+	    
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
+		
 		if(isPresent) {
 			message="EmployeeService.EMPLOYEE_ALREADY_PRESENT";
 			throw new EmployeeAlreadyPresentException(message);
@@ -93,10 +95,12 @@ public class EmployeeServiceImpl {
 		emp.setMiddleName(employee.getMiddleName());
 		emp.setLastName(employee.getLastName());
 		emp.setCity(employee.getCity());
+		emp.setPhoneNumber(employee.getPhoneNumber());
 		employeeRepository.save(emp);
 		}
 		
 		return message;
+		
 	}
 	
 	

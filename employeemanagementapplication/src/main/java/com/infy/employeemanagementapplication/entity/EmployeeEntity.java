@@ -37,13 +37,30 @@ public class EmployeeEntity {
 	
 	private String city;
 	
+	@Column(name="phonenumber")
+	private long phoneNumber;
 	
 	
 	
 	
+	
+	
+
+
+
+
+
+
 	public int getEmpId() {
 		return empId;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -57,9 +74,23 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -73,9 +104,23 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public String getMiddleName() {
 		return middleName;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -89,9 +134,23 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public String getLastName() {
 		return lastName;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -105,9 +164,23 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public LocalDate getDob() {
 		return dob;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -121,6 +194,13 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public String getCity() {
 		return city;
 	}
@@ -129,9 +209,53 @@ public class EmployeeEntity {
 
 
 
+
+
+
+
+
+
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+
+
+
+
+
 
 
 
@@ -146,6 +270,7 @@ public class EmployeeEntity {
 		emp.setLastName(employee.getLastName());
 		emp.setDob(employee.getDob());
 		emp.setCity(employee.getCity());
+		emp.setPhoneNumber(employee.getPhoneNumber());
 		
 		return emp;
 		

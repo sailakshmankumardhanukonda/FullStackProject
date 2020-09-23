@@ -1,9 +1,9 @@
-INSERT INTO EMPLOYEE (empid,firstname,middlename,lastname,dob,city) VALUES
-  (1060799,'sai','lakshman kumar','dhanukonda','2020-06-10','hyderabad'),
-   (1060798,'sai','charan','dhanukonda','2020-05-09','hyderabad'),
-    (1060797,'sai','sandeep','dhanukonda','2019-04-08','banglore'),
-     (1060796,'sai','ram','dhanukonda','2018-03-07','chennai'),
-      (1060795,'sai','kumar','dhanukonda','2017-02-06','pune');
+INSERT INTO EMPLOYEE (empid,firstname,middlename,lastname,dob,city,phonenumber) VALUES
+  (1060799,'sai','lakshman kumar','dhanukonda','2020-06-10','hyderabad',9898787878),
+   (1060798,'sai','charan','dhanukonda','2020-05-09','hyderabad',9898988878),
+    (1060797,'sai','sandeep','dhanukonda','2019-04-08','banglore',9898987877),
+     (1060796,'sai','ram','dhanukonda','2018-03-07','chennai',9898987876),
+      (1060795,'sai','kumar','dhanukonda','2017-02-06','pune',9898987874);
 
 
 

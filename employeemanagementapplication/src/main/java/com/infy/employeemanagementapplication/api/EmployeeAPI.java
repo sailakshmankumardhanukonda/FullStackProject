@@ -34,6 +34,7 @@ public class EmployeeAPI {
 	
 	@PostMapping(value="/create")
 	public String createEmployee(@RequestBody Employee employee){
+		
 		try {
 		return employeeServiceImpl.createEmployee(employee);
 		
@@ -90,6 +91,7 @@ public class EmployeeAPI {
     
     @DeleteMapping(value= "/delete/{empId}")
     public String deleteEmployee(@PathVariable int empId){
+    	
     try {
     	return employeeServiceImpl.deleteEmployee(empId);
     }catch(EmployeeDoesNotExistsException e) {
