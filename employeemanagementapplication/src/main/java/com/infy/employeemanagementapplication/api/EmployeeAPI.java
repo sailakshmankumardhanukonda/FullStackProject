@@ -55,9 +55,9 @@ public class EmployeeAPI {
 	
 	
 	@GetMapping(value="/get/{empId}")
-	public Map<Integer, Employee> getEmployee(@PathVariable int empId){
+	public Employee getEmployee(@PathVariable int empId){
 		
-		return employeeServiceImpl.getEmployee(empId);
+		return employeeServiceImpl.getEmployee(empId).get(empId);
 		
 		
 	}

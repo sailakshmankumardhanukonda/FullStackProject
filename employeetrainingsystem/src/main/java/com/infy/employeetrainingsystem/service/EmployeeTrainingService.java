@@ -8,5 +8,7 @@ public interface EmployeeTrainingService {
 	
 	
 	public List<EmployeeTraining> getEmployeeTrainingDetails(int empId);
+	
+	public List<EmployeeTraining> getAllTrainings();
 
 }

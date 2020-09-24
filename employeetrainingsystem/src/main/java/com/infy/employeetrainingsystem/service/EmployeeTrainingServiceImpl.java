@@ -27,5 +27,22 @@ public class EmployeeTrainingServiceImpl {
 		
 	return trainings1;	
 	}
+	
+	
+	
+	public List<EmployeeTraining> getAllTrainings(){
+		
+		
+		List<EmployeeTraining> trainings1=new ArrayList<>();
+		
+		List<EmployeeTrainingEntity> trainings=employeeTrainingRepository.findAll();
+		
+		trainings.forEach(train -> trainings1.add(EmployeeTrainingEntity.getModel(train)));
+		
+		return trainings1;
+		
+		
+	}
+	
 
 }
