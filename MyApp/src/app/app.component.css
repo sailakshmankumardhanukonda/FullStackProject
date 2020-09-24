@@ -1,0 +1,36 @@
+.side-nav{
+
+background-color: #141719;
+width: 300px;
+
+}
+
+
+.mat-list{
+padding-top: 150px;
+margin-left: 2px;
+margin-right: 20px;
+
+
+}
+
+
+.mat-item{
+color: white;
+font-size: 16px;
+background-color: #65757D;
+margin-top: 25px;
+margin-bottom: 25px;
+
+}
+.mat-item:active{
+
+    background-color: #1482AC;
+    
+    }
+
+.mat-item:hover{
+
+        background-color: #1482AC;
+        
+        }
