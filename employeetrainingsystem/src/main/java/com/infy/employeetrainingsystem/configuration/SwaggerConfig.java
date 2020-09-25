@@ -25,7 +25,7 @@ public class SwaggerConfig {
 		
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.paths(PathSelectors.ant("/employeetraining/employee/**"))
+				.paths(PathSelectors.ant("/employee/**"))
 				.apis(RequestHandlerSelectors.basePackage("com.infy"))
 				.build()
 				.apiInfo(new ApiInfo("Employee Training Details","this api has rest endpoints"
