@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -25,7 +26,7 @@ public class Swaggerconfig {
 		
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.paths(PathSelectors.ant("/employeemanagement/employee/**"))
+				.paths(PathSelectors.ant("/employee/**"))
 				.apis(RequestHandlerSelectors.basePackage("com.infy"))
 				.build()
 				.apiInfo(new ApiInfo("Employee Management Details","this api has rest endpoints"
@@ -38,6 +39,7 @@ public class Swaggerconfig {
 	
 	
 	}
+	
 	
 	
 	
