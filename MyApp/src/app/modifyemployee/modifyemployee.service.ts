@@ -20,7 +20,7 @@ return this.http.get<modifyemployee>('http://localhost:8080/employee/get/'+id);
   public modify(emp:modifyemployee){
 
 
-return this.http.put('http://localhost:8080/employee/get/',emp,{responseType: 'text' as 'json'});
+return this.http.put('http://localhost:8080/employee/update',emp,{responseType: 'text' as 'json'});
 
   }
 

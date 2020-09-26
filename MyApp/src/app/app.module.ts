@@ -15,6 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { TopnavComponent } from './topnav/topnav.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { MatListModule } from '@angular/material/list';
     EmployeetrainingComponent,
     AddemployeeComponent,
     ModifyemployeeComponent,
-    DeleteemployeeComponent
+    DeleteemployeeComponent,
+    TopnavComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { MatListModule } from '@angular/material/list';
     AgGridModule.withComponents([]),
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+   
+ 
   ],
   providers: [DeleteemployeeService],
   bootstrap: [AppComponent]

@@ -1,34 +1,25 @@
-
-<nav class="navbar navbar-expand-md" style="background-color: #134263;border: 1px solid #0070C0;">
-    <a href="" class="navbar-brand">
-        <img src="assets/infosyslogo.png" alt="infosys" height="30px" width="80px">
-    </a>
-    <div>
-        <a href="" class="navbar-head">Employee Training Management Portal</a>
-    </div>    
-</nav>
-<nav class="sidenavbar" >
-        <a class="link"  href="#"  >Employee Details</a>  
-     
-        <a class="link" style="position: relative; top: 40px;" href="#" >Employee Training</a>
-</nav>
-
-
+<div *ngIf="route.children.length===0">
 <ag-grid-angular
-  style="width: 1065px; height: 500px; position: relative;left:302px;position: sticky;"
+style="width: 1065px; height: 500px;position: sticky;"
   class="ag-theme-balham"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs">
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)">
 </ag-grid-angular>
 
+<div class="buttons-list">
+<div class="buttons-dist">
+<button class="button" style=" background-color: #1482AC;color: white;border: 0px; height: 45px;width: 175px; font-size: 16px;"
+ (click)="goToAddEmployee()">Add Employee</button>
+</div>
+<div class="buttons-dist">
+<button class="button" style="background-color: #1482AC;color: white;border: 0px; height: 45px;width: 175px; font-size: 16px;"
+(click)="goToModifyEmployee()">Modify Employee</button>
+</div>
+<div class="buttons-dist">
+<button class="button" style="background-color: #1482AC;color: white;border: 0px; height: 45px;width: 175px; font-size: 16px;"
+(click)="goToDeleteEmployee()">Remove Employee</button>
+</div>
+</div>
 
-<button class="button" style="position: absolute;left: 450px;top: 585px;
- background-color: #1482AC;color: white;border: 0px; padding: 10px; font-size: 16px;">Add Employee</button>
-<button class="button" style="position: absolute;left: 750px;top: 585px;
-background-color: #1482AC;color: white;border: 0px; padding: 10px; font-size: 16px;">Modify Employee</button>
-<button class="button" style="position: absolute;left: 1050px;top: 585px;
-background-color: #1482AC;color: white;border: 0px; padding: 10px; font-size: 16px;">Remove Employee</button>
-
-
-
-
+</div>
+<router-outlet></router-outlet>

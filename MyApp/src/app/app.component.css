@@ -1,5 +1,14 @@
-.side-nav{
+.navbar-head{
+    position: relative;
+    left: 300px;
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+    
+  }
 
+.side-nav{
+top: 50px;
 background-color: #141719;
 width: 300px;
 
@@ -21,16 +30,28 @@ font-size: 16px;
 background-color: #65757D;
 margin-top: 25px;
 margin-bottom: 25px;
+text-align: center;
+text-decoration: none;
 
 }
-.mat-item:active{
 
-    background-color: #1482AC;
-    
-    }
+.link{
+  
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
-.mat-item:hover{
 
-        background-color: #1482AC;
-        
-        }
+
+
+}
+
+
+.active{
+
+
+background-color: #1482AC;
+
+
+}
+

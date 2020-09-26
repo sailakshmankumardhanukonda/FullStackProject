@@ -1,38 +1,14 @@
-.navbar-head{
-  color: white;
-  text-decoration: none;
-  font-size: 32px;
-  text-align: center;
-  position: relative;
-  left: 325px;
+.buttons-list{
+
+margin-top: 25px;
+margin-left: 80px;
 
 
 }
 
-.sidenavbar{
-    
-    width: 300px;
-    background-color: #141719 ;
-    height: 100%;
-    position: fixed;
-    padding-top: 75px;
+.buttons-dist{
 
-}
+margin-left: 90px;
+display: inline;
 
-.link{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-decoration: none;
-    color: white; 
-    display: block;
-    text-align: center;
-    background-color: #65757D;
-    margin-right: 20px;
-    margin-left: 5px;
-    font-size: 16px;
-
-}
-
-.sidenavbar a:active {
-    background-color: #1482AC ;
 }

@@ -9,32 +9,33 @@
           </div>
      
      <button class="button" type="submit" (click)="getEmployee()" >Modify</button>
-     <button  class="button" >back</button>
+     <button  class="button" (click)="backToDetails()">back</button>
 
   
    </form>
 </div>
 
-<!--
+
 
 <form [formGroup]="modifyForm" >
   <div style="display: flex;">
  <div class="form-group" >
   <label for="id" style="font-size: 12px;">Employee Id</label>
-  <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="id" formControlName="empId">
-  <p *ngIf="addForm.controls.empId.errors" class="alert alert-danger">This field is required!</p>
+  <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="id" 
+  formControlName="empId" disabled>
+  <p *ngIf="modifyForm.controls.empId.errors" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="firstName" style="font-size: 12px;">First Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="firstName"
- formControlName="firstName">
- <p *ngIf="addForm.controls.firstName.errors" class="alert alert-danger">This field is required!</p>
+ formControlName="firstName" disabled>
+ <p *ngIf="modifyForm.controls.firstName.errors" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="middleName" style="font-size: 12px;">Middle Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="middleName"
  formControlName="middleName">
- <p *ngIf="addForm.controls.middleName.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.middleName.errors" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 <div style="display: flex;">
@@ -42,19 +43,19 @@
  <label for="lastName" style="font-size: 12px;">Last Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="lastName"
  formControlName="lastName">
- <p *ngIf="addForm.controls.lastName.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.lastName.errors" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;" >
  <label for="dob" style="font-size: 12px;">DOB</label>
  <input type="date" style="font-size: 16px;width: 200px;" class="form-control" id="dob" 
- formControlName="dob">
- <p *ngIf="addForm.controls.dob.errors" class="alert alert-danger">This field is required!</p>
+ formControlName="dob" disabled>
+ <p *ngIf="modifyForm.controls.dob.errors" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="city" style="font-size: 12px;">City</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="city"
  formControlName="city">
- <p *ngIf="addForm.controls.city.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.city.errors" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 <div style="display: flex;">
@@ -62,17 +63,17 @@
  <label for="phoneNumber" style="font-size: 12px;">Contact No</label>
  <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="phoneNumber"
  formControlName="phoneNumber">
- <p *ngIf="addForm.controls.phoneNumber.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.phoneNumber.errors" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 
 
 <button class="button" type="submit" (click)="modifyEmployee()">Save</button>
-<button  class="button" >Cancel</button>
+<button  class="button">Cancel</button>
 
 </form>
 
 
      
--->
+
 <div>{{message}}</div>
