@@ -15,7 +15,7 @@ public delete(id:string){
 
   
 
-return this.http.delete('http://localhost:8080/employee/delete/'+id,{responseType: 'text' as 'json'});
+return this.http.delete('http://localhost:8080/employeemanagement/employee/delete/'+id,{responseType: 'text' as 'json'});
 
 
 

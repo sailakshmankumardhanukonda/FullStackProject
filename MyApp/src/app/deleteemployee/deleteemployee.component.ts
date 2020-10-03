@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DeleteemployeeService } from './deleteemployee.service'
-import { deleteemployee } from './deleteemployee';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DeletedialogComponent } from '../deletedialog/deletedialog.component';
 
 
 @Component({
@@ -15,24 +16,37 @@ export class DeleteemployeeComponent implements OnInit {
  deleteForm:FormGroup;
   message:any;
   constructor(private deleteemployeeservice:DeleteemployeeService,private formBuilder:FormBuilder,
-    private router:Router) { 
+    private router:Router,public dialog:MatDialog) { 
+
+
 
   }
 
  
   ngOnInit()  {
-    this.deleteForm = this.formBuilder.group({
-      id: ['', Validators.required]
-    });
+
+        
+  this.deleteForm = this.formBuilder.group({
+    id: ['', Validators.required]
+  });
+   
   
 
   }
+
+
 
   public deleteEmployee(){
 
 
    let response= this.deleteemployeeservice.delete(this.deleteForm.get("id").value);
-  response.subscribe((data)=>this.message=data);
+  response.subscribe((res)=>{
+    this.dialog.open(DeletedialogComponent,{ height: '80px', width: '600px',data:{message:res}});
+    this.deleteForm.reset();
+});
+  
+  
+    
 
   }
 
@@ -41,6 +55,7 @@ export class DeleteemployeeComponent implements OnInit {
    this.router.navigate(['/details']);
 
   }
+  
 
 
 

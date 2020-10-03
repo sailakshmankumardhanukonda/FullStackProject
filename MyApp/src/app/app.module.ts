@@ -10,12 +10,16 @@ import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { ModifyemployeeComponent } from './modifyemployee/modifyemployee.component';
 import { DeleteemployeeComponent } from './deleteemployee/deleteemployee.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DeleteemployeeService } from './deleteemployee/deleteemployee.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { TopnavComponent } from './topnav/topnav.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeletedialogComponent } from './deletedialog/deletedialog.component';
+import { AdddialogComponent } from './adddialog/adddialog.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ModifydialogComponent } from './modifydialog/modifydialog.component';
 
 
 
@@ -27,7 +31,11 @@ import { TopnavComponent } from './topnav/topnav.component';
     AddemployeeComponent,
     ModifyemployeeComponent,
     DeleteemployeeComponent,
-    TopnavComponent
+    TopnavComponent,
+    DeletedialogComponent,
+    AdddialogComponent,
+    ModifydialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,10 +46,12 @@ import { TopnavComponent } from './topnav/topnav.component';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
-   
+    MatDialogModule,
+    MatButtonModule
  
   ],
-  providers: [DeleteemployeeService],
+  entryComponents:[DeletedialogComponent,AdddialogComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

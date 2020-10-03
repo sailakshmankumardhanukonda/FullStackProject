@@ -6,11 +6,12 @@
             <div class="form-group" >
              <label for="empId" style="font-size: 12px;">Search by Employee ID*</label>
              <input type="text" style="font-size: 16px;width: 300px;"
-              class="form-control" id="empId" formControlName="id">
-          <p *ngIf="deleteForm.controls.id.errors" class="alert alert-danger">This field is required!</p>
+              class="form-control" id="empId" formControlName="id" >
+          <p *ngIf="deleteForm.controls.id.invalid && deleteForm.controls.id.touched" 
+          class="alert alert-danger">This field is required!</p>
                 </div>
            
-           <button class="button" type="submit" (click)="deleteEmployee()" >Remove</button>
+           <button [disabled]="deleteForm.invalid" class="button" type="submit" (click)="deleteEmployee()" >Remove</button>
            <button  class="button" (click)="backToDetails()" >back</button>
 
            

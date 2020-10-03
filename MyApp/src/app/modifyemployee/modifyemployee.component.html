@@ -5,17 +5,17 @@
        <label for="empId" style="font-size: 12px;">Search by Employee ID*</label>
        <input type="text" style="font-size: 16px;width: 300px;"
         class="form-control" id="empId" formControlName="id">
-    <p *ngIf="searchForm.controls.id.errors" class="alert alert-danger">This field is required!</p>
+    <p *ngIf="searchForm.controls.id.errors && searchForm.controls.id.touched" class="alert alert-danger">This field is required!</p>
           </div>
      
-     <button class="button" type="submit" (click)="getEmployee()" >Modify</button>
+     <button class="button" [disabled]="searchForm.invalid" type="submit" (click)="getEmployee()" >Modify</button>
      <button  class="button" (click)="backToDetails()">back</button>
 
   
    </form>
 </div>
 
-
+<div [hidden]="hide">
 
 <form [formGroup]="modifyForm" >
   <div style="display: flex;">
@@ -23,19 +23,19 @@
   <label for="id" style="font-size: 12px;">Employee Id</label>
   <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="id" 
   formControlName="empId" disabled>
-  <p *ngIf="modifyForm.controls.empId.errors" class="alert alert-danger">This field is required!</p>
+  <p *ngIf="modifyForm.controls.empId.errors && modifyForm.controls.empId.touched" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="firstName" style="font-size: 12px;">First Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="firstName"
  formControlName="firstName" disabled>
- <p *ngIf="modifyForm.controls.firstName.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.firstName.errors && modifyForm.controls.firstName.touched" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="middleName" style="font-size: 12px;">Middle Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="middleName"
  formControlName="middleName">
- <p *ngIf="modifyForm.controls.middleName.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.middleName.errors && modifyForm.controls.middleName.touched" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 <div style="display: flex;">
@@ -43,19 +43,19 @@
  <label for="lastName" style="font-size: 12px;">Last Name</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="lastName"
  formControlName="lastName">
- <p *ngIf="modifyForm.controls.lastName.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.lastName.errors && modifyForm.controls.lastName.touched" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;" >
  <label for="dob" style="font-size: 12px;">DOB</label>
  <input type="date" style="font-size: 16px;width: 200px;" class="form-control" id="dob" 
  formControlName="dob" disabled>
- <p *ngIf="modifyForm.controls.dob.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.dob.errors && modifyForm.controls.dob.touched" class="alert alert-danger">This field is required!</p>
 </div>
 <div class="form-group" style="margin-left: 40px;">
  <label for="city" style="font-size: 12px;">City</label>
  <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="city"
  formControlName="city">
- <p *ngIf="modifyForm.controls.city.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.city.errors && modifyForm.controls.city.touched" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 <div style="display: flex;">
@@ -63,17 +63,16 @@
  <label for="phoneNumber" style="font-size: 12px;">Contact No</label>
  <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="phoneNumber"
  formControlName="phoneNumber">
- <p *ngIf="modifyForm.controls.phoneNumber.errors" class="alert alert-danger">This field is required!</p>
+ <p *ngIf="modifyForm.controls.phoneNumber.errors && modifyForm.controls.phoneNumber.touched" class="alert alert-danger">This field is required!</p>
 </div>
 </div>
 
 
-<button class="button" type="submit" (click)="modifyEmployee()">Save</button>
-<button  class="button">Cancel</button>
+<button class="button"  [disabled]="modifyForm.invalid" type="submit" (click)="modifyEmployee()">Save</button>
+<button  class="button"  (click)="backToDetails()">Cancel</button>
 
 </form>
 
 
-     
+</div>
 
-<div>{{message}}</div>

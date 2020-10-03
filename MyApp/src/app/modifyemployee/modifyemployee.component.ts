@@ -4,6 +4,8 @@ import { ModifyemployeeService } from './modifyemployee.service';
 import { modifyemployee } from './modifyemployee';
 import { empid } from './empid';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ModifydialogComponent } from '../modifydialog/modifydialog.component';
 
 @Component({
   selector: 'app-modifyemployee',
@@ -13,24 +15,25 @@ import { Router } from '@angular/router';
 export class ModifyemployeeComponent implements OnInit {
 
   message:any;
+  hide:boolean=true;
   searchForm:FormGroup;
   modifyForm:FormGroup;
 
   constructor(private formBuilder:FormBuilder,private modifyemployeeservice:ModifyemployeeService,
-    private router : Router) { }
+    private router : Router,public dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
       id: ['', Validators.required]
     });
     this.modifyForm=this.formBuilder.group({
-      empId: null,
-      firstName:'',
-      middleName:'',
-      lastName:'',
-      dob: null,
-      city:'',
-      phoneNumber:null,
+      empId: ["",Validators.required],
+      firstName:['',Validators.required],
+      middleName:['',Validators.required],
+      lastName:['',Validators.required],
+      dob: ["",Validators.required],
+      city:['',Validators.required],
+      phoneNumber:["",Validators.required]
 
 });
   
@@ -49,7 +52,7 @@ public getEmployee(){
    this.modifyForm.controls['dob'].setValue(data.dob),
    this.modifyForm.controls['city'].setValue(data.city),
    this.modifyForm.controls['phoneNumber'].setValue(data.phoneNumber)
- 
+   this.hide=false;
   
  });
 
@@ -62,7 +65,12 @@ public getEmployee(){
   
  
   let response=this.modifyemployeeservice.modify(this.modifyForm.value);
-  response.subscribe((data) => this.message=data);
+  response.subscribe((res) => {
+    this.dialog.open(ModifydialogComponent,{ height: '200px', width: '600px',data:{message:res}});
+    this.modifyForm.reset();
+
+  });
+  
 
 
  }
@@ -75,3 +83,4 @@ this.router.navigate(['/details']);
 
 
 }
+

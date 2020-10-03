@@ -3,6 +3,7 @@ import { EmployeedetailsService } from './employeedetails.service';
 import { Router,ActivatedRoute } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-employeedetails',
   templateUrl: './employeedetails.component.html',
@@ -14,8 +15,6 @@ export class EmployeedetailsComponent implements OnInit {
  private columnDefs;
  private gridApi;
  private gridColumnApi;
- 
- 
 
   constructor(private employeedetailsservice:EmployeedetailsService,private router:Router,
     public route:ActivatedRoute) { }
@@ -31,7 +30,8 @@ export class EmployeedetailsComponent implements OnInit {
       {headerName: 'City',field:"city",width:150 },
       {headerName: 'Contact Number',field:"phoneNumber",width:150}
     ];
- 
+
+  
 
   }
 

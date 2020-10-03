@@ -13,7 +13,7 @@ export class AddemployeeService {
 
   
 
-    return this.http.post('http://localhost:8080/employee/create',emp,{responseType: 'text' as 'json'});
+    return this.http.post('http://localhost:8080/employeemanagement/employee/create',emp,{responseType: 'text' as 'json'});
     
     
     

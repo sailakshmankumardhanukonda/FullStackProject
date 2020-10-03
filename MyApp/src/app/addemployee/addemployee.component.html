@@ -1,56 +1,56 @@
 <form [formGroup]="addForm" >
-    <div style="display: flex;">
+    <div style="display:flex ">
    <div class="form-group" >
     <label for="id" style="font-size: 12px;">Employee Id*</label>
     <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="id" formControlName="empId">
-    <p *ngIf="addForm.controls.empId.errors" class="alert alert-danger">This field is required!</p>
+    <p *ngIf="addForm.controls.empId.errors && addForm.controls.empId.touched" class="alert alert-danger">This field is required!</p>
   </div>
   <div class="form-group" style="margin-left: 40px;">
    <label for="firstName" style="font-size: 12px;">First Name*</label>
    <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="firstName"
    formControlName="firstName">
-   <p *ngIf="addForm.controls.firstName.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.firstName.errors && addForm.controls.firstName.touched" class="alert alert-danger">This field is required!</p>
  </div>
  <div class="form-group" style="margin-left: 40px;">
    <label for="middleName" style="font-size: 12px;">Middle Name*</label>
    <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="middleName"
    formControlName="middleName">
-   <p *ngIf="addForm.controls.middleName.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.middleName.errors && addForm.controls.middleName.touched" class="alert alert-danger">This field is required!</p>
  </div>
 </div>
-<div style="display: flex;">
+<div style="display: flex;margin-top: 40px;">
  <div class="form-group" >
    <label for="lastName" style="font-size: 12px;">Last Name*</label>
    <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="lastName"
    formControlName="lastName">
-   <p *ngIf="addForm.controls.lastName.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.lastName.errors && addForm.controls.lastName.touched" class="alert alert-danger">This field is required!</p>
  </div>
  <div class="form-group" style="margin-left: 40px;" >
    <label for="dob" style="font-size: 12px;">DOB*</label>
    <input type="date" style="font-size: 16px;width: 200px;" class="form-control" id="dob" 
    formControlName="dob">
-   <p *ngIf="addForm.controls.dob.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.dob.errors && addForm.controls.dob.touched" class="alert alert-danger">This field is required!</p>
  </div>
  <div class="form-group" style="margin-left: 40px;">
    <label for="city" style="font-size: 12px;">City*</label>
    <input type="text" style="font-size: 16px;width: 200px;" class="form-control" id="city"
    formControlName="city">
-   <p *ngIf="addForm.controls.city.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.city.errors && addForm.controls.city.touched" class="alert alert-danger">This field is required!</p>
  </div>
 </div>
-<div style="display: flex;">
+<div style="display: flex; margin-top: 40px;">
  <div class="form-group" >
    <label for="phoneNumber" style="font-size: 12px;">Contact No*</label>
    <input type="number" style="font-size: 16px;width: 200px;" class="form-control" id="phoneNumber"
    formControlName="phoneNumber">
-   <p *ngIf="addForm.controls.phoneNumber.errors" class="alert alert-danger">This field is required!</p>
+   <p *ngIf="addForm.controls.phoneNumber.errors && addForm.controls.phoneNumber.touched" class="alert alert-danger">This field is required!</p>
  </div>
 </div>
 
-  
-  <button class="button" type="submit" (click)="addEmployee()">Save</button>
-  <button  class="button" >Cancel</button>
-
+  <div style="margin-top: 40px;">
+  <button class="button" [disabled]="addForm.invalid" type="submit" (click)="addEmployee()">Save</button>
+  <button  class="button" (click)="backToEmployeedetails()">Cancel</button>
+</div>
 </form>
 
 

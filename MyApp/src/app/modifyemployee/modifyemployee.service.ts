@@ -13,14 +13,14 @@ export class ModifyemployeeService {
 
   public getEmployee(id:number):Observable<modifyemployee>{
 
-return this.http.get<modifyemployee>('http://localhost:8080/employee/get/'+id);
+return this.http.get<modifyemployee>('http://localhost:8080/employeemanagement/employee/get/'+id);
 
   }
 
   public modify(emp:modifyemployee){
 
 
-return this.http.put('http://localhost:8080/employee/update',emp,{responseType: 'text' as 'json'});
+return this.http.put('http://localhost:8080/employeemanagement/employee/update',emp,{responseType: 'text' as 'json'});
 
   }
 
