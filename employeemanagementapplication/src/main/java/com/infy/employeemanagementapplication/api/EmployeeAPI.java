@@ -1,5 +1,6 @@
 package com.infy.employeemanagementapplication.api;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.employeemanagementapplication.exception.EmployeeAlreadyPresentException;
@@ -22,7 +24,7 @@ import com.infy.employeemanagementapplication.model.Employee;
 import com.infy.employeemanagementapplication.service.EmployeeServiceImpl;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "*",methods = RequestMethod.GET)
 @RestController
 @RequestMapping("employee")
 public class EmployeeAPI {
@@ -58,17 +60,27 @@ public class EmployeeAPI {
 	
 	@GetMapping(value="/get/{empId}")
 	public Employee getEmployee(@PathVariable int empId){
-		
+		try {
 		return employeeServiceImpl.getEmployee(empId).get(empId);
 		
+		
+		}
+		catch(EmployeeDoesNotExistsException e) {
+			   logger=LoggerFactory.getLogger(this.getClass());
+				logger.error(e.getMessage());
+				
+				return new Employee();
+				
+			   
+		   }
 		
 	}
 	
 	
 	@GetMapping(value="/getall")
-	public Map<Integer, Employee> getAll(){
+	public List<Object> getAll(){
 		
-		return employeeServiceImpl.getAll();
+		return Arrays.asList(employeeServiceImpl.getAll().values().toArray());
 	}
 	
 	

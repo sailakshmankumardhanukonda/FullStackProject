@@ -49,7 +49,7 @@ public class EmployeeServiceImpl {
 	}
 	
 	
-	public Map<Integer, Employee> getEmployee(int empId) {
+	public Map<Integer, Employee> getEmployee(int empId) throws EmployeeDoesNotExistsException{
 		
 	String message;
 	boolean isPresent=employeeRepository.existsById(empId);
@@ -57,6 +57,7 @@ public class EmployeeServiceImpl {
 	
 	if(!isPresent) {
 		message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
+		throw new EmployeeDoesNotExistsException(message);
 	
 	}
 	else {
