@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { employeetraining } from './employeetraining';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +10,7 @@ export class EmployeetrainingService {
 
 public getTrainings(){
 
-return this.http.get('http://localhost:8081/employeetraining/employee/getall');
+return this.http.get('http://localhost:8080/employeemanagement/training/gettrainingdetails');
 
 
 }
