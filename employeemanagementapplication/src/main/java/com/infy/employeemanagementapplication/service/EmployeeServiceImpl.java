@@ -36,12 +36,12 @@ public class EmployeeServiceImpl {
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
 		
 		if(isPresent) {
-			message="EmployeeService.EMPLOYEE_ALREADY_PRESENT";
+			message="Employee Already Exists";
 			throw new EmployeeAlreadyPresentException(message);
 		}
 		else {
 		
-		message="EmployeeRepository.EMPLOYEE_CREATED";
+		message="Employee has been added Sucessfully";
 		employeeRepository.save(Employee.getEntity(employee));
 		}
 		return message;
@@ -56,7 +56,7 @@ public class EmployeeServiceImpl {
 	Map<Integer, Employee> emp=new TreeMap<>();
 	
 	if(!isPresent) {
-		message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
+		message="Employee with "+empId+" does not exists";
 		throw new EmployeeDoesNotExistsException(message);
 	
 	}
@@ -87,12 +87,12 @@ public class EmployeeServiceImpl {
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
 		
 		if(!isPresent) {
-			message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
+			message="Employee with "+employee.getEmpId()+" does not exists";
 		  throw new EmployeeDoesNotExistsException(message);
 		}
 		else {
 		EmployeeEntity emp=employeeRepository.findById(employee.getEmpId()).get();
-		message="EmployeeRepository.EMPLOYEE_UPDATED";
+		message="Employee details has been updated sucessfully";
 		emp.setMiddleName(employee.getMiddleName());
 		emp.setLastName(employee.getLastName());
 		emp.setCity(employee.getCity());
@@ -117,11 +117,12 @@ public class EmployeeServiceImpl {
 		boolean isPresent=emp.isPresent();
 		
 		if(!isPresent) {
-			message="EmployeeService.EMPLOYEE_DOES_NOT_EXISTS";
+			message="No data found for the employee id "+empId;
 	         throw new EmployeeDoesNotExistsException(message);	
 		}else {
-		message="EmployeeRepository.EMPLOYEE_DELETED";
+		
 		employeeRepository.deleteById(empId);
+		message="Employee with employee id "+empId+" removed sucessfully";
 		}
 		return message;
 		

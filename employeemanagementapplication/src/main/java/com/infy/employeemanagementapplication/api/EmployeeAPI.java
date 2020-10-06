@@ -4,9 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infy.employeemanagementapplication.exception.EmployeeAlreadyPresentException;
@@ -24,7 +31,7 @@ import com.infy.employeemanagementapplication.model.Employee;
 import com.infy.employeemanagementapplication.service.EmployeeServiceImpl;
 
 
-@CrossOrigin(origins = "*",methods = RequestMethod.GET)
+@CrossOrigin
 @RestController
 @RequestMapping("employee")
 public class EmployeeAPI {
@@ -35,19 +42,23 @@ public class EmployeeAPI {
 	
 	
 	Logger logger;
-	
+
 	@PostMapping(value="/create")
-	public String createEmployee(@RequestBody Employee employee){
+	public ResponseEntity<String> createEmployee(@RequestBody Employee employee){
 		
+		String response="";
 		try {
-		return employeeServiceImpl.createEmployee(employee);
+			
+		response= employeeServiceImpl.createEmployee(employee);
+		return new ResponseEntity<String>(response,HttpStatus.CREATED);
+		
 		
 		}catch(EmployeeAlreadyPresentException e) {
 		  
 			logger=LoggerFactory.getLogger(this.getClass());
 			logger.error(e.getMessage());
 			
-			return e.getMessage();
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 			
 		}
 		
@@ -59,17 +70,17 @@ public class EmployeeAPI {
 	
 	
 	@GetMapping(value="/get/{empId}")
-	public Employee getEmployee(@PathVariable int empId){
+	public ResponseEntity<Object> getEmployee(@PathVariable int empId){
 		try {
-		return employeeServiceImpl.getEmployee(empId).get(empId);
-		
+		Employee emp= employeeServiceImpl.getEmployee(empId).get(empId);
+		return new ResponseEntity<Object>(emp,HttpStatus.OK);
 		
 		}
 		catch(EmployeeDoesNotExistsException e) {
 			   logger=LoggerFactory.getLogger(this.getClass());
 				logger.error(e.getMessage());
 				
-				return new Employee();
+				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.BAD_REQUEST);
 				
 			   
 		   }
@@ -85,15 +96,16 @@ public class EmployeeAPI {
 	
 	
     @PutMapping(value= "/update")
-	public String updateEmployee(@RequestBody Employee employee){
-    	
+	public ResponseEntity<String> updateEmployee(@RequestBody Employee employee){
+    	String response="";
    try {
-     return	employeeServiceImpl.updateEmployee(employee);
+     response=employeeServiceImpl.updateEmployee(employee);
+     return new ResponseEntity<String>(response,HttpStatus.OK);
    }catch(EmployeeDoesNotExistsException e) {
 	   logger=LoggerFactory.getLogger(this.getClass());
 		logger.error(e.getMessage());
 		
-		return e.getMessage();
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 		
 	   
    }
@@ -104,15 +116,16 @@ public class EmployeeAPI {
     
     
     @DeleteMapping(value= "/delete/{empId}")
-    public String deleteEmployee(@PathVariable int empId){
-    	
+    public ResponseEntity<String> deleteEmployee(@PathVariable int empId){
+    	String response="";
     try {
-    	return employeeServiceImpl.deleteEmployee(empId);
+    	response= employeeServiceImpl.deleteEmployee(empId);
+    	return new ResponseEntity<String>(response,HttpStatus.OK);
     }catch(EmployeeDoesNotExistsException e) {
     	logger=LoggerFactory.getLogger(this.getClass());
 		logger.error(e.getMessage());
 		
-		return e.getMessage();
+		return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
 		
     	
     	
