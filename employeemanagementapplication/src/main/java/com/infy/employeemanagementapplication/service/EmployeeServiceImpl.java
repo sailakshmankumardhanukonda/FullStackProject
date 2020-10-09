@@ -56,7 +56,7 @@ public class EmployeeServiceImpl {
 	Map<Integer, Employee> emp=new TreeMap<>();
 	
 	if(!isPresent) {
-		message="Employee with "+empId+" does not exists";
+		message="Employee with employee id "+empId+" does not exists";
 		throw new EmployeeDoesNotExistsException(message);
 	
 	}
@@ -69,11 +69,11 @@ public class EmployeeServiceImpl {
 
 }
 	
-	public Map<Integer, Employee> getAll(){
-		 Map<Integer, Employee> map1=new TreeMap<>();
+	public List<Employee> getAll(){
+		 List<Employee> list1=new ArrayList<>();
 		 Iterable<EmployeeEntity> emplist1= employeeRepository.findAll();
-		 emplist1.forEach(emp -> map1.put(emp.getEmpId(), EmployeeEntity.getModel(emp)));
-		return map1;
+		 emplist1.forEach(emp -> list1.add(EmployeeEntity.getModel(emp)));
+		return list1;
 		
 	}
 	
@@ -87,7 +87,7 @@ public class EmployeeServiceImpl {
 		boolean isPresent=employeeRepository.existsById(employee.getEmpId());
 		
 		if(!isPresent) {
-			message="Employee with "+employee.getEmpId()+" does not exists";
+			message="Employee with employee id "+employee.getEmpId()+" does not exists";
 		  throw new EmployeeDoesNotExistsException(message);
 		}
 		else {

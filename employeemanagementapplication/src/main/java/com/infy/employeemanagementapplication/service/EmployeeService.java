@@ -12,7 +12,7 @@ public interface EmployeeService {
 	
 	public Map<Integer, Employee> getEmployee(int empId);
 	
-	public Map<Integer, Employee> getAll();
+	public List<Employee> getAll();
 	
 	public String updateEmployee(Employee employee);
 	
