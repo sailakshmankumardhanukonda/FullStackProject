@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,10 +15,14 @@ import com.infy.employeemanagementapplication.model.Training;
 import com.infy.employeemanagementapplication.repository.EmployeeRepository;
 
 @Service
+@RibbonClient("empribbon")
 public class EmployeeTrainingServiceImpl {
 	
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private RestTemplate template;
 	
 
 	@SuppressWarnings("unchecked")
@@ -25,7 +30,7 @@ public class EmployeeTrainingServiceImpl {
 		
 		
 		
-		return new RestTemplate().getForObject("http://localhost:8081/employeetraining/employee/getall", List.class);
+		return template.getForObject("http://EmployeeTrainingService"+"/employeetraining/employee/getall", List.class);
 		
 		
 		

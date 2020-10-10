@@ -1,3 +1,4 @@
+      
 spring:
     profiles:
       active: dev
@@ -9,7 +10,12 @@ spring:
       hibernate:        ddl-auto: update  
 
     h2:      console:        enabled: true
-        
+            application:      name: EmployeeTrainingService  
+     
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2222/eureka   instance:    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
 
         
 management:
