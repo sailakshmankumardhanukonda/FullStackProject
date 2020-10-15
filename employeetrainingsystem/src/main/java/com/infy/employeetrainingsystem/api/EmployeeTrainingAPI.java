@@ -34,6 +34,8 @@ public class EmployeeTrainingAPI {
 	@GetMapping(value="/getall")
 	public List<EmployeeTraining> getAllTrainings(){
 		
+		
+		
 		return employeeTrainingServiceImpl.getAllTrainings();
 	}
 	

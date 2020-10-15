@@ -13,6 +13,8 @@ import com.infy.employeemanagementapplication.exception.EmployeeDoesNotExistsExc
 import com.infy.employeemanagementapplication.model.EmployeeTraining;
 import com.infy.employeemanagementapplication.model.Training;
 import com.infy.employeemanagementapplication.repository.EmployeeRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 @Service
 @RibbonClient("empribbon")
@@ -26,14 +28,27 @@ public class EmployeeTrainingServiceImpl {
 	
 
 	@SuppressWarnings("unchecked")
+	@HystrixCommand(fallbackMethod = "getTrainingDetailsFallback",commandProperties = {
+	          @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "4"),
+	          @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000"),
+	          @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
+	          @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "60000")}
+)
 	public List<Training> getTrainingDetails(){
 		
-		
-		
+			
 		return template.getForObject("http://EmployeeTrainingService"+"/employeetraining/employee/getall", List.class);
 		
 		
 		
+	}
+	
+	
+	public List<Training> getTrainingDetailsFallback(){
+		
+	
+		
+		return new ArrayList<Training>();
 	}
 	
 	
