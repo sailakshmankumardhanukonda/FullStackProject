@@ -15,6 +15,7 @@ export class DeleteemployeeComponent implements OnInit {
 
  deleteForm:FormGroup;
   message:any;
+  errMessage:any;
   constructor(private deleteemployeeservice:DeleteemployeeService,private formBuilder:FormBuilder,
     private router:Router,public dialog:MatDialog) { 
 
@@ -43,6 +44,11 @@ export class DeleteemployeeComponent implements OnInit {
   response.subscribe((res)=>{
     this.dialog.open(DeletedialogComponent,{ height: '80px', width: '600px',data:{message:res}});
     this.deleteForm.reset();
+},errors => {
+  this.deleteForm.reset();
+  this.errMessage=errors.error;
+  this.dialog.open(DeletedialogComponent,{ height: '80px', width: '600px',data:{message:this.errMessage}});
+ 
 });
   
   

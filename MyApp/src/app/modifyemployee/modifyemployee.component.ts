@@ -18,6 +18,7 @@ export class ModifyemployeeComponent implements OnInit {
   hide:boolean=true;
   searchForm:FormGroup;
   modifyForm:FormGroup;
+  errorMessage:any;
 
   constructor(private formBuilder:FormBuilder,private modifyemployeeservice:ModifyemployeeService,
     private router : Router,public dialog:MatDialog) { }
@@ -54,7 +55,12 @@ public getEmployee(){
    this.modifyForm.controls['phoneNumber'].setValue(data.phoneNumber)
    this.hide=false;
   
- });
+ },errors => { 
+  
+  this.searchForm.reset();
+  this.errorMessage=errors.error
+  this.dialog.open(ModifydialogComponent,{ height: '200px', width: '600px',data:{message:this.errorMessage}});
+  });
 
  
  
@@ -68,6 +74,8 @@ public getEmployee(){
   response.subscribe((res) => {
     this.dialog.open(ModifydialogComponent,{ height: '200px', width: '600px',data:{message:res}});
     this.modifyForm.reset();
+    this.searchForm.reset();
+    this.hide=true;
 
   });
   

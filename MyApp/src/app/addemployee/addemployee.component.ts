@@ -15,6 +15,7 @@ export class AddemployeeComponent implements OnInit {
 
 addForm:FormGroup;
 message:any;
+errMessage:any;
 
   constructor(private addemployeeservice:AddemployeeService,private formBuilder:FormBuilder,
     private router:Router,public dialog:MatDialog) { }
@@ -43,9 +44,15 @@ public addEmployee(){
 let response=this.addemployeeservice.add(this.addForm.value);
 response.subscribe((res) =>{
   this.dialog.open(AdddialogComponent,{ height: '200px', width: '600px',data:{message:res}});
-   this.addForm.reset()});
+   this.addForm.reset()},errors => {
+    this.addForm.reset();
+    this.errMessage=errors.error;
+    this.dialog.open(AdddialogComponent,{ height: '200px', width: '600px',data:{message:this.errMessage}});
+   
 
 
+
+});
 }
 
 
